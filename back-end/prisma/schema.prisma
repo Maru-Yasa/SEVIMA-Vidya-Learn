@@ -10,18 +10,51 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
   id        String    @id @default(uuid()) @map("_id")
-  username  String    @unique
   email     String    @unique
-  name      String    
+  nama      String    
   password  String
+
+  role      Role      @default(SISWA)
+  kode      String
+  jenjangSekolah JenjangSekolah @default(SMA)
+  idSekolah String
+  idProvinsi String
+  idKabupaten String
+  jenisKelamin JenisKelamin @default(LAKI)
+
+  prompts Prompt[]
+
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
 
+model Prompt {
+  id String @id @default(uuid()) @map("_id")
+  question String
+  tag String
+
+  user User @relation(fields: [idUser], references: [id])
+  idUser String
+  idSekolah String
+}
+
 
 enum Role {
-  user
-  admin
+  GURU
+  SISWA
+}
+
+enum JenisKelamin {
+  LAKI
+  PEREMPUAN
+}
+
+enum JenjangSekolah {
+  SD
+  SMP
+  SMA
+  SMK
 }
