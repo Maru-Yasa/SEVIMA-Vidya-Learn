@@ -135,7 +135,9 @@ export const Register = () => {
             <Box className={'max-w-md w-full'}>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
                     <Text className="text-3xl text-orange-500 font-bold" >Register</Text>
-
+                    <Text className={'text-md text-gray-400'}>
+                        Daftarkan akunmu secara gratis, <br /> <Link to={'/register/guru'} className="text-primary underline">Kamu seorang guru?</Link>
+                    </Text>
                     {steps[step]}
                 </form>
             </Box>

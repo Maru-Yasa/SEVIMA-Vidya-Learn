@@ -45,6 +45,7 @@ export const Login = () => {
             <Box className={'max-w-md w-full'}>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
                     <Text className="text-3xl text-orange-500 font-bold" >Login</Text>
+                    <Text className={'text-md text-gray-400'}>Login dan mulai bertanya</Text>
                     <Input label={'Email'} hook={register("email", { required: {value: true, message: 'Email dibutuhkan'} })} error={errors.email?.message} />
                     <Input label={'Password'} type={'password'} hook={register("password", { required: {value: true, message: 'Password dibutuhkan'} })} error={errors.password?.message} />
                     <div className="mt-5 mb-3 flex flex-col text-center">
