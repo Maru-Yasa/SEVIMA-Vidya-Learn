@@ -8,3 +8,11 @@ Vidya berasal dari bahasa sangsekerta yang artinya cerdas. Kamu bisa belajar den
  - UI yang mudah dipahami
  - Analisis penggunaan prompt
  - Login sebagai Guru / Siswa
+
+## Tech Stack
+
+ - MongoDB with prisma
+ - NodeJs with Express
+ - OpenAi
+ - React powered by vite
+ - TailwindCSS
