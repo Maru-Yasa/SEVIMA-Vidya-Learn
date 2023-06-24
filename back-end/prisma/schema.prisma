@@ -34,7 +34,8 @@ model User {
 model Prompt {
   id String @id @default(uuid()) @map("_id")
   question String
-  tag String
+  answer String?
+  tag String?
 
   user User @relation(fields: [idUser], references: [id])
   idUser String
