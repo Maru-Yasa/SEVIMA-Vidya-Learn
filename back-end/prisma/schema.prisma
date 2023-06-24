@@ -35,11 +35,15 @@ model Prompt {
   id String @id @default(uuid()) @map("_id")
   question String
   answer String?
+  description String?
   tag String?
 
   user User @relation(fields: [idUser], references: [id])
   idUser String
   idSekolah String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 
