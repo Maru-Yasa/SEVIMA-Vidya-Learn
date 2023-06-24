@@ -11,15 +11,15 @@ import { Home } from './pages/Home'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <ProtectedRoute reverse><Login /></ProtectedRoute>
+    element: <ProtectedRoute reverse element={<Login />} />
   },
   {
     path: '/register',
-    element:<ProtectedRoute reverse><Register /></ProtectedRoute>
+    element: <ProtectedRoute reverse element={<Register />} />
   },
   {
     path: '/home',
-    element: <ProtectedRoute><Home /></ProtectedRoute>
+    element: <ProtectedRoute element={<Home />} />
   },
 ]);
 

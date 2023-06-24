@@ -1,13 +1,13 @@
 import { Navigate } from "react-router-dom"
 import { useAuth } from "../hooks/useAuth"
 
-export const ProtectedRoute = ({ children, reverse=false }) => {
+export const ProtectedRoute = ({ element, reverse=false }) => {
     const { isAuthenticated } = useAuth() 
 
     if (reverse) {
-        return !isAuthenticated ? children: <Navigate to={'/home'} replace />
+        return !isAuthenticated ? element: <Navigate to={'/home'} />
     }else{
-        return isAuthenticated ? children : <Navigate to={'/'} replace />
+        return isAuthenticated ? element : <Navigate to={'/'} />
     }
 
 }

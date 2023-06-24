@@ -11,7 +11,7 @@ import { useAuth } from "../hooks/useAuth"
 
 export const Login = () => {
 
-    const {register, handleSubmit, formState: { errors }} = useForm()
+    const {register, handleSubmit, formState: { errors }, setError} = useForm()
     const { isAuthenticated } = useAuth()
     const { setToken } = useAuth()
     const [loading, setLoading] = useState(false);
@@ -21,6 +21,11 @@ export const Login = () => {
         data = (await login(data)).data
         setLoading(false)
         if(!data.status){
+            data.errors && data.errors.forEach((e) => {
+                setError(e.path[0], {
+                    message: e.message
+                })
+            })
             toast.error(data.message)
             return
         }
@@ -40,8 +45,8 @@ export const Login = () => {
             <Box className={'max-w-md w-full'}>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
                     <Text className="text-3xl text-orange-500 font-bold" >Login</Text>
-                    <Input label={'Username'} hook={register("username", { required: {value: true, message: 'Username is required'} })} error={errors.username?.message} />
-                    <Input label={'Password'} type={'password'} hook={register("password", { required: {value: true, message: 'Password is required'} })} error={errors.password?.message} />
+                    <Input label={'Email'} hook={register("email", { required: {value: true, message: 'Email dibutuhkan'} })} error={errors.email?.message} />
+                    <Input label={'Password'} type={'password'} hook={register("password", { required: {value: true, message: 'Password dibutuhkan'} })} error={errors.password?.message} />
                     <div className="mt-5 mb-3 flex flex-col text-center">
                         <button className="btn btn-primary">
                             {loading ? <>

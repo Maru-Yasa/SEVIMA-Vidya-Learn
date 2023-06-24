@@ -1,8 +1,12 @@
 import axios from "./axios"
 
-export const login = async ({username, password}) => {
-    const res = await axios.post('/auth/login', {username, password})
-    return res
+export const login = async ({email, password}) => {
+    try {
+        const res = await axios.post('/auth/login', {email, password})
+        return res
+    } catch (error) {
+        return error.response
+    }
 }
 
 export const register = async ({username, email, password, name}) => {
