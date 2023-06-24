@@ -14,15 +14,15 @@ datasource db {
 model User {
   id        String    @id @default(uuid()) @map("_id")
   email     String    @unique
-  nama      String    
-  password  String
+  nama      String?    
+  password  String?
 
   role      Role      @default(SISWA)
-  kode      String
+  kode      String?
   jenjangSekolah JenjangSekolah @default(SMA)
-  idSekolah String
-  idProvinsi String
-  idKabupaten String
+  idSekolah String?
+  idProvinsi String?
+  idKabupaten String?
   jenisKelamin JenisKelamin @default(LAKI)
 
   prompts Prompt[]
