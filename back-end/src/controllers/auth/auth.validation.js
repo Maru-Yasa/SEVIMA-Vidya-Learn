@@ -12,9 +12,6 @@ export const registerSchema = Joi.object({
     password: Joi.string()
         .min(6)
         .required(),
-    kode: Joi.string()
-        .min(3)
-        .required(),
     jenjangSekolah: Joi.string()
         .required(),
     idSekolah: Joi.string()

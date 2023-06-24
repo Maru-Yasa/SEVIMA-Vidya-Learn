@@ -21,7 +21,8 @@ export const AuthProvider = ({ children }) => {
                 setItem('token', newToken)
             })
         } else {
-          removeItem('token')
+            setIsAthenticated(false)
+            removeItem('token')
         }    
         setToken(newToken);
     };

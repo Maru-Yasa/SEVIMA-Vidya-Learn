@@ -28,6 +28,7 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
     const validator = registerSchema.validate(req.body)
     const data = validator.value
+    console.log(data);
     if (validator.error) {
         return res.status(400).json({
             status: false,

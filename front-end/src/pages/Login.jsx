@@ -18,7 +18,7 @@ export const Login = () => {
     const navigate = useNavigate()
     const onSubmit = async (data) => {
         setLoading(true)
-        data = (await login(data)).data
+        data = (await login(data))
         setLoading(false)
         if(!data.status){
             data.errors && data.errors.forEach((e) => {
@@ -32,7 +32,7 @@ export const Login = () => {
         toast.success(data.message)
         setToken(data.data.token)
         setTimeout(() => {
-            navigate('/register', {replace: true})
+            navigate('/home', {replace: true})
         }, 2000)
     }
 

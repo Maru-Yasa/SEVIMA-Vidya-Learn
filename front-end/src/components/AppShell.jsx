@@ -4,16 +4,14 @@ import { Box } from "./Box"
 import { Text } from "./Text"
 import { FaHome, FaUserCircle } from 'react-icons/fa'
 import { useAuth } from "../hooks/useAuth"
-import { useLocalStorage } from "../hooks/useLocalStorage"
 import { toast } from "react-hot-toast"
 
 export const AppShell = ({ children }) => {
-    const { user } = useAuth()
-    const { removeItem } = useLocalStorage()
+    const { user, setToken } = useAuth()
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        removeItem('token')
+        setToken()
         toast.success("Sukses melakukan logout")
         setTimeout(() => {
             navigate('/')
