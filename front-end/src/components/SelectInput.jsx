@@ -6,7 +6,7 @@ export const SelectInput = ({label, helpText, error, options, placeholder, name,
     
     const loadOptions = async (inputValue) => {
         const data = await load(inputValue)
-        console.log(data);
+        
         return data
     }
 

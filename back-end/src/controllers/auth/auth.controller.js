@@ -38,10 +38,10 @@ export const updateUser = async (req, res) => {
     }
 
     if (data.password && data.oldPassword) {
-        console.log('sini');
+        
         try {
             const user = await prisma.user.findUnique({where:{ id: req.user.id }})
-            // console.log(bcrypt.compare(data.oldPassword, user.password));
+            // 
             if (!bcrypt.compareSync(data.oldPassword, user.password)) {
                 return res.status(401).json({
                     status: false,
@@ -52,7 +52,7 @@ export const updateUser = async (req, res) => {
             delete data.oldPassword
             data.password = await bcrypt.hash(data.password, 10);
         } catch (error) {
-            console.log(error);
+            
         }
     }
     const updatedUser = await updateProfile(req.user.id, data);
@@ -74,7 +74,7 @@ export const refreshToken = async (req, res) => {
 export const register = async (req, res) => {
     const validator = registerSchema.validate(req.body)
     const data = validator.value
-    console.log(data);
+    
     if (validator.error) {
         return res.status(400).json({
             status: false,

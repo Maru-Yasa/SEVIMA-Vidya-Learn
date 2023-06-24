@@ -20,7 +20,7 @@ export const AnalyticChart = ({data}) => {
   };
 
   useEffect(() => {
-    console.log(data);
+    
   }, [])
 
   return (

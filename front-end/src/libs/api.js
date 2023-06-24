@@ -13,7 +13,7 @@ export const login = async ({email, password}) => {
 export const register = async (data) => {
     try {        
         const res = await axios.post('/auth/register', data)
-        console.log(res);
+        
         return res.data
     } catch (error) {
         return error.response.data
@@ -37,7 +37,7 @@ export const updateUser = async (data) => {
 export const refreshToken = async () => {
     try {        
         const token = localStorage.getItem('token');
-        console.log('Bearer '+token);
+        
         const res = await axios.get('/auth/refresh', {
             headers: {
                 Authorization: 'Bearer '+token
@@ -163,7 +163,7 @@ export const createPrompt = async (data) => {
         })
         return res.data
     } catch (error) {
-        console.log(error);
+        
         return error.response.data
     }
 }
@@ -178,7 +178,7 @@ export const deletePrompt = async (id) => {
         })
         return res.data
     } catch (error) {
-        console.log(error);
+        
         return error.response.data
     }
 }

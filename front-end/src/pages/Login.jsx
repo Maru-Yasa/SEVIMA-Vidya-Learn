@@ -37,7 +37,7 @@ export const Login = () => {
     }
 
     useEffect(() => {
-        console.log(isAuthenticated);
+        
     }, [])
 
     return <App>

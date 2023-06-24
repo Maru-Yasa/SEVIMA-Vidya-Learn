@@ -63,7 +63,7 @@ export const updateProfile = async (id, data) => {
         })
         return user
     } catch (error) {
-        console.log(error);
+        
         return error
     }
 }

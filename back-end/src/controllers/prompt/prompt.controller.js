@@ -18,7 +18,7 @@ export const createItem = async (req, res) => {
     const answer = await requestOpenAi(prompt.question)
     const description = await requestDescriptionOpenAi(prompt.question)
     const tag = await requestTagOpenAi(description)
-    console.log(tag);
+    
     const newPrompt = await updatePrompt(prompt.id, {
         answer: answer,
         description: description,

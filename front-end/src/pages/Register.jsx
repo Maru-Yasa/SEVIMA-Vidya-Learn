@@ -111,7 +111,7 @@ export const Register = () => {
     const onSubmit = (data) => {
         setLoading(true)
         userRegister(data).then((res) => {
-            console.log(res);
+            
             setLoading(false)
             if(!res.status){
                 res.errors && res.errors.forEach((e) => {

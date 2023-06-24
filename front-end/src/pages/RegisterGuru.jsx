@@ -112,7 +112,7 @@ export const RegisterGuru = () => {
         setLoading(true)
         userRegister({...data, role: 'GURU'}).then((res) => {
             setLoading(false)
-            console.log(res);
+            
             if(!res.status){
                 res.errors && res.errors.forEach((e) => {
                     setError(e.path[0], {

@@ -11,7 +11,7 @@ export const FormEditPassword = () => {
 
     const mutation = useMutation(updateUser, {
         onSuccess: async (res) => {
-            console.log(res);
+            
             res.status && toast.success(res.message)
             !res.status && toast.error(res.message)
             res.status && setToken(null)
