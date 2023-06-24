@@ -3,34 +3,34 @@ import prisma from '../libs/prisma';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-export const createUser = async (username, email, name, password) => {
-    const hashedPassword = await bcrypt.hash(password, 10);
+export const createUser = async (data) => {
+    const hashedPassword = await bcrypt.hash(data.password, 10);
     const user = await prisma.user.create({
-        data: {username, email, name, password: hashedPassword}
+        data: {...data, password: hashedPassword}
     })
     return user
 }
 
-export const loginUser = async (username, password) => {
+export const loginUser = async ({email, password}) => {
     try {
         const user = await prisma.user.findUnique({
             where: {
-                username: username
+                email: email
             }
         })
 
         if (!bcrypt.compareSync(password, user.password)) {
             return {
                 status: false,
-                message: "Username or password invalid",
+                message: "Email atau password salah",
                 data: {}
             }
         }
 
-        const token = jwt.sign({ id: user.id, name: user.name, username: user.username, email: user.email }, config.SECRET);
+        const token = jwt.sign({ id: user.id, nama: user.nama, email: user.email, idSekolah: user.idSekolah }, config.SECRET);
         return {
             status: true,
-            message: "Success login",
+            message: "Login berhasil",
             data: {
                 token,
                 type: 'Bearer'
@@ -40,7 +40,7 @@ export const loginUser = async (username, password) => {
     } catch (error) {
         return {
             status: false,
-            message: "User not found"
+            message: "Email atau password salah"
         }
     }
 }
