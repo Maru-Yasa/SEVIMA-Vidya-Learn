@@ -96,7 +96,7 @@ const Step2 = ({ register, control, errors, loading, handlePrevious, watch }) =>
     </>
 }
 
-export const Register = () => {
+export const RegisterGuru = () => {
 
     const {register, handleSubmit, watch, control, formState: { errors }, setError, reset} = useForm()
     const [loading, setLoading] = useState(false);
@@ -110,9 +110,9 @@ export const Register = () => {
 
     const onSubmit = (data) => {
         setLoading(true)
-        userRegister(data).then((res) => {
-            console.log(res);
+        userRegister({...data, role: 'GURU'}).then((res) => {
             setLoading(false)
+            console.log(res);
             if(!res.status){
                 res.errors && res.errors.forEach((e) => {
                     setError(e.path[0], {
@@ -136,7 +136,7 @@ export const Register = () => {
                 <form onSubmit={handleSubmit(onSubmit)} action="">
                     <Text className="text-3xl text-orange-500 font-bold" >Register</Text>
                     <Text className={'text-md text-gray-400'}>
-                        Kamu akan mendaftar sebagai siswa, <br /> <Link to={'/register/guru'} className="text-primary underline">Kamu seorang guru?</Link>
+                        Kamu akan mendaftar sebagai guru,<br /> <Link to={'/register'} className="text-primary underline">Kamu seorang siswa?</Link>
                     </Text>
                     {steps[step]}
                 </form>

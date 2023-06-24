@@ -27,7 +27,7 @@ export const Analytic = () => {
     return <AppShell>
         { user.role == 'GURU' && <>
         <div className="grid grid-cols-12 gap-3">
-            <Box className={'col-span-5 h-fit'}>
+            <Box className={'col-span-12 md:col-span-5 h-fit'}>
                 <Text className={'text-2xl text-primary font-medium'}>Trending Topics</Text>
                 {trend.isFetched && trend.data.data.map((data, index) => {
                     return <div key={index} className="text-white bg-primary p-3 rounded-xl mt-3 flex justify-between">
@@ -36,7 +36,7 @@ export const Analytic = () => {
                     </div>
                 })}
             </Box>
-            <Box className={'col-span-7'}>
+            <Box className={'col-span-12 md:col-span-7'}>
                 <Text className={'text-2xl text-primary font-medium mb-3'}>Penggunaan Mingguan</Text>
                 {uses.isFetched && <AnalyticChart data={handleData()} />}
             </Box>

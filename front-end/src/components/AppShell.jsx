@@ -20,7 +20,7 @@ export const AppShell = ({ children }) => {
     }
 
     return <App>
-        <div className="sm:w-full mx-5 md:mx-0 md:w-10/12 min-h-screen my-5">
+        <div className="sm:w-full md:w-10/12 min-h-screen">
 
             <Box className={'bg-orange-500 text-white flex flex-col md:flex-row justify-between items-center'}>
                 <div className="flex gap-3">
@@ -29,7 +29,7 @@ export const AppShell = ({ children }) => {
                     </Text>
                 </div>
             </Box>
-            <Box className={'mt-5 flex gap-3'}>                
+            <Box className={'mt-5 flex gap-3 flex-wrap'}>                
                     <Link to={'/home'} className="btn btn-primary text-white btn-sm"><FaHome /> Home</Link>
                     <Link to={'/home/profile'} className="btn btn-primary text-white btn-sm"><FaUserCircle /> Profile</Link>
                     <Link to={'/home/Analytic'} className="btn btn-primary text-white btn-sm"><FaChartLine /> Analytic</Link>

@@ -42,7 +42,7 @@ export const Login = () => {
 
     return <App>
         <div className="min-h-screen flex justify-center justify-items-center items-center">
-            <Box className={'max-w-md w-full'}>
+            <Box className={'max-w-xs md:max-w-md w-full'}>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
                     <Text className="text-3xl text-orange-500 font-bold" >Login</Text>
                     <Text className={'text-md text-gray-400'}>Login dan mulai bertanya</Text>
@@ -57,7 +57,7 @@ export const Login = () => {
                             Login
                             </>}
                         </button>
-                        <Link to={'/register'} className="underline mt-3 text-primary">Dont have any account?</Link>
+                        <Link to={'/register'} className="underline mt-3 text-primary">Belum punya akun?</Link>
                     </div>
                 </form>
             </Box>

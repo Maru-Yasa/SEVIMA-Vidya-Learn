@@ -22,6 +22,7 @@ export const registerSchema = Joi.object({
         .required(),
     jenisKelamin: Joi.string()
         .required(),
+    role: Joi.string()
     
 }).messages({
     "any.required": "Data harus dilengkapi",

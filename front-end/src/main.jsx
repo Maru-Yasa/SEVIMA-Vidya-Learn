@@ -15,6 +15,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { PromptDetail } from './pages/PromptDetail'
 import { Profile } from './pages/Profile'
 import { Analytic } from './pages/Analytic'
+import { RegisterGuru } from './pages/RegisterGuru'
 
 
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <ProtectedRoute reverse element={<Register />} />
+  },
+  {
+    path: '/register/guru',
+    element: <ProtectedRoute reverse element={<RegisterGuru />} />
   },
   {
     path: '/home',
