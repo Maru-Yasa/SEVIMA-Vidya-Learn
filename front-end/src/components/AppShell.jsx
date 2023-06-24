@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import App from "../App"
 import { Box } from "./Box"
 import { Text } from "./Text"
-import { FaHome, FaUserCircle } from 'react-icons/fa'
+import { FaChartLine, FaHome, FaUserCircle } from 'react-icons/fa'
 import { BiLogOut } from 'react-icons/bi'
 import { useAuth } from "../hooks/useAuth"
 import { toast } from "react-hot-toast"
@@ -32,6 +32,7 @@ export const AppShell = ({ children }) => {
             <Box className={'mt-5 flex gap-3'}>                
                     <Link to={'/home'} className="btn btn-primary text-white btn-sm"><FaHome /> Home</Link>
                     <Link to={'/home/profile'} className="btn btn-primary text-white btn-sm"><FaUserCircle /> Profile</Link>
+                    <Link to={'/home/Analytic'} className="btn btn-primary text-white btn-sm"><FaChartLine /> Analytic</Link>
             </Box>
             <div className="grid grid-cols-12 mt-5 gap-5">
                 <Box className={"bg-white col-span-12 md:col-span-4 flex flex-col justify-center items-center h-fit"}>

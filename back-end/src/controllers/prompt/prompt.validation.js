@@ -19,3 +19,8 @@ export const getByIdSchema = Joi.object({
     "any.min": "Panjang data minimal {#limit}",
     "string.email": "Data email harus valid"
 })
+
+export const getTrendSchema = Joi.object({
+    npsn: Joi.string()
+        .required()
+})

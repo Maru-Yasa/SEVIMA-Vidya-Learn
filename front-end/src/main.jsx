@@ -14,6 +14,7 @@ import { Home } from './pages/Home'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { PromptDetail } from './pages/PromptDetail'
 import { Profile } from './pages/Profile'
+import { Analytic } from './pages/Analytic'
 
 
 
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
   {
     path: '/home/profile',
     element: <ProtectedRoute element={<Profile />} />
-  }
+  },
+  {
+    path: '/home/analytic',
+    element: <ProtectedRoute element={<Analytic />} />
+  },
 ]);
 
 const queryClient = new QueryClient()

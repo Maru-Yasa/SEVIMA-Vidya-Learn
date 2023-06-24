@@ -111,6 +111,48 @@ export const getPromptById = async (id) => {
     }
 }
 
+export const getAnalyticTrend = async (npsn) => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`/prompt/analytic/trend?npsn=${npsn}`, {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
+export const getAnalyticUses = async (npsn) => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`/prompt/analytic/uses?npsn=${npsn}`, {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
+export const getSelfAnalyticUses = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`/prompt/analytic/selfuses`, {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
 export const createPrompt = async (data) => {
     try {
         const token = localStorage.getItem('token');
