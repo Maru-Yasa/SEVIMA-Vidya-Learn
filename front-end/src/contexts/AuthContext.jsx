@@ -19,6 +19,8 @@ export const AuthProvider = ({ children }) => {
                 }
                 setIsAthenticated(true)
                 setItem('token', newToken)
+                setToken(newToken)
+                // setUser(jwtDecode(newToken))
             })
         } else {
             setIsAthenticated(false)

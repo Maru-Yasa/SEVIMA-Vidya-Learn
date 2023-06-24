@@ -1,11 +1,11 @@
-export const Input = ({type, label, placeHolder, helpText, hook, error}) => {
+export const Input = ({type, label, placeHolder, helpText, hook, error, defaultValue}) => {
     return <div className="my-3 flex flex-col">
         <label className="mb-1">
             <span className="">
                 {label}
             </span>
         </label>
-        <input type={type} className="input border-gray-300" placeholder={placeHolder} {...hook} />
+        <input type={type} defaultValue={defaultValue} className="input border-gray-300" placeholder={placeHolder} {...hook} />
         {helpText && <>
             <small className="mt-1">
                 <span className="text-gray-400">{helpText}</span>

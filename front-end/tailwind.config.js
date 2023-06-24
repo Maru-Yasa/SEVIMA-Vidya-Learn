@@ -9,7 +9,7 @@ export default {
     themes: [
       {
         mytheme: {        
-          "primary": "#F59E0B",
+          "primary": "#F97316",
                   
           "secondary": "#d926a9",
                   
@@ -38,6 +38,6 @@ export default {
     },
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('daisyui')],
+  plugins: [require("@tailwindcss/typography"), require('daisyui')],
 }
 

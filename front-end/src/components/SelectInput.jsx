@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form'
 import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 
-export const SelectInput = ({label, helpText, error, options, placeholder, name, control, async=false, load}) => {
+export const SelectInput = ({label, helpText, error, options, placeholder, name, control, async=false, load, defaultValue}) => {
     
     const loadOptions = async (inputValue) => {
         const data = await load(inputValue)
@@ -45,6 +45,7 @@ export const SelectInput = ({label, helpText, error, options, placeholder, name,
                             placeholder={placeholder} 
                             name={name} 
                             options={options}
+                            defaultValue={options.find(c => c.value === defaultValue)}
                         />
                     </> 
                 )}

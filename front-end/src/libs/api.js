@@ -20,6 +20,35 @@ export const register = async (data) => {
     }
 }
 
+export const updateUser = async (data) => {
+    try {        
+        const token = localStorage.getItem('token');
+        const res = await axios.post('/auth/updateProfile', data, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
+export const refreshToken = async () => {
+    try {        
+        const token = localStorage.getItem('token');
+        console.log('Bearer '+token);
+        const res = await axios.get('/auth/refresh', {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
 export const getProvince = async () => {
     try {
         const res = await _axios.get('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
@@ -53,6 +82,65 @@ export const getSekolah = async (name) => {
         return []
     }
 }
+
+export const getAllPrompt = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get('/prompt', {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
+export const getPromptById = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`/prompt/${id}`, {
+            headers: {
+                Authorization: 'Bearer '+token
+            }
+        })
+        return res.data
+    } catch (error) {
+        return error.response.data
+    }
+}
+
+export const createPrompt = async (data) => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.post('/prompt/create', data,{
+            headers: {
+                Authorization: 'Bearer '+token
+            },
+        })
+        return res.data
+    } catch (error) {
+        console.log(error);
+        return error.response.data
+    }
+}
+
+export const deletePrompt = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.delete(`/prompt/${id}`,{
+            headers: {
+                Authorization: 'Bearer '+token
+            },
+        })
+        return res.data
+    } catch (error) {
+        console.log(error);
+        return error.response.data
+    }
+}
+
 
 export const validateToken = async (token) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
