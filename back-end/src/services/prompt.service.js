@@ -42,23 +42,71 @@ export const getPromptByUserId = async (id) => {
     const prompts = await prisma.prompt.findMany({
         where: {
             idUser: id
+        },
+        orderBy: {
+            createdAt: 'desc'
         }
     })
 
     return prompts
 }
 
-export const requestOpenAi = async (question) => {
+export const requestDescriptionOpenAi = async (question) => {
     try {
-        console.log(config);
         const response = await openai.createCompletion({
-            model: "text-davinci-003",
+            model: "text-curie-001",
             prompt: `
-                Task:  jelaskan materi pembelajaran dan berikan materi lebih lanjut melalui url
+                Task:  Ringkas ini untuk kelas dua
                 Topic: ${question}
                 Style: Akademik
                 Tone: bahagia
-                Format: MDX
+                Format: Text
+            `,
+            temperature: 1,
+            max_tokens: 100,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        })
+        return response.data.choices[0].text
+    } catch (error) {
+        return error
+    }
+}
+
+export const requestTagOpenAi = async (topic) => {
+    try {
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: `
+            Task: dari text dibawah, sebutkan jenis pelajaran dalam satu kata sebagai hastag menggunakan bahasa indonesia
+            Topic: ${topic}
+            Length: one word
+            Format: tag
+            `,
+            temperature: 1,
+            max_tokens: 10,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        })
+        return response.data.choices[0].text
+    } catch (error) {
+        return error
+    }
+}
+
+export const requestOpenAi = async (question) => {
+    try {
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: `
+            Task: jelaskan materi pembelajaran dan berikan materi lebih lanjut melalui url yang valid
+            Topic: ${question}
+            Style: Academic
+            Tone: Bahagia
+            Length: 3 paragraphs or more
+            Format: HTML tags with h2 for title p for paragraph and li for url list and also a for link
             `,
             temperature: 1,
             max_tokens: 1000,
@@ -66,8 +114,20 @@ export const requestOpenAi = async (question) => {
             frequency_penalty: 0,
             presence_penalty: 0,
         })
-        console.log(response.data.choices[0]);
         return response.data.choices[0].text
+    } catch (error) {
+        return error
+    }
+}
+
+export const deletePrompt = async (id) => {
+    try {
+        const response = await prisma.prompt.delete({
+            where: {
+                id: id
+            }
+        })
+        return response
     } catch (error) {
         return error
     }

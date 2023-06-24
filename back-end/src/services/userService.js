@@ -27,7 +27,7 @@ export const loginUser = async ({email, password}) => {
             }
         }
 
-        const token = jwt.sign({ id: user.id, nama: user.nama, email: user.email, idSekolah: user.idSekolah }, config.SECRET);
+        const token = jwt.sign({ id: user.id, nama: user.nama, email: user.email, jenisKelamin: user.jenisKelamin, idSekolah: user.idSekolah, role: user.role }, config.SECRET);
         return {
             status: true,
             message: "Login berhasil",
@@ -42,5 +42,28 @@ export const loginUser = async ({email, password}) => {
             status: false,
             message: "Email atau password salah"
         }
+    }
+}
+
+export const getToken = async (user) => {
+    const token = jwt.sign({ id: user.id, nama: user.nama, email: user.email, idSekolah: user.idSekolah, role: user.role }, config.SECRET);
+    return {
+        token,
+        type: 'Bearer'
+    }
+}
+
+export const updateProfile = async (id, data) => {
+    try {
+        const user = await prisma.user.update({
+            where: {
+                id: id
+            },
+            data: {...data}
+        })
+        return user
+    } catch (error) {
+        console.log(error);
+        return error
     }
 }

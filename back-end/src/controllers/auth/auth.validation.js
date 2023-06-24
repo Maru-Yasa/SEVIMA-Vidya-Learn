@@ -41,3 +41,16 @@ export const loginSchema = Joi.object({
     "any.min": "Panjang data minimal {#limit}",
     "string.email": "Data email harus valid"
 })
+
+export const updateProfileSchema = Joi.object({
+    email: Joi.string()
+        .email(),
+    nama: Joi.string()
+        .min(3),
+    password: Joi.string()
+        .min(6),
+}).messages({
+    "any.required": "Data harus dilengkapi",
+    "any.min": "Panjang data minimal {#limit}",
+    "string.email": "Data email harus valid"
+}).unknown(true)

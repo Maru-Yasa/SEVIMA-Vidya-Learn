@@ -1,4 +1,4 @@
-import { createPrompt, getPromptById, getPromptByUserId, requestOpenAi, updatePrompt } from "../../services/prompt.service";
+import { createPrompt, deletePrompt, getPromptById, getPromptByUserId, requestDescriptionOpenAi, requestOpenAi, requestTagOpenAi, updatePrompt } from "../../services/prompt.service";
 import { createSchema, getByIdSchema } from "./prompt.validation";
 
 export const createItem = async (req, res) => {
@@ -14,9 +14,14 @@ export const createItem = async (req, res) => {
 
     const prompt = await createPrompt({...data, idSekolah: req.user.idSekolah, idUser: req.user.id})
     // TODO: integrasi ke OpenAi API
-    const response = await requestOpenAi(prompt.question)
+    const answer = await requestOpenAi(prompt.question)
+    const description = await requestDescriptionOpenAi(prompt.question)
+    const tag = await requestTagOpenAi(description)
+    console.log(tag);
     const newPrompt = await updatePrompt(prompt.id, {
-        answer: response
+        answer: answer,
+        description: description,
+        tag: tag
     })
     return res.status(200).json({
         status: true,
@@ -50,7 +55,6 @@ export const getItemById = async (req, res) => {
             errors: validator.error.details
         }); 
     }
-    console.log(data);
     const prompt = await getPromptById(data.id)
     return res.status(200).json({
         status: true,
@@ -63,6 +67,20 @@ export const updateItem = () => {
 
 }
 
-export const deleteItem = () => {
-
+export const deleteItem = async (req, res) => {
+    const validator = getByIdSchema.validate(req.params)
+    const data = req.params
+    if (validator.error) {
+        return res.status(400).json({
+            status: false,
+            message: 'Data kurang atau tidak tepat, mohon dilengkapi',
+            errors: validator.error.details
+        }); 
+    }
+    await deletePrompt(data.id);
+    return res.status(200).json({
+        status: true,
+        message: 'Berhasil menghapus prompt',
+        data: {}
+    })
 }

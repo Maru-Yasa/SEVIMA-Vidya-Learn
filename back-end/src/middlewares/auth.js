@@ -2,8 +2,9 @@ import jwt from 'jsonwebtoken'
 import config from '../config';
 
 export const authenticateToken = (req, res, next) => {
+  try {
     const token = req.headers.authorization.split(' ')[1];
-  
+    // console.log(req.headers.authorization.split(' ')[1]);
     if (!token) {
       return res.status(401).json({ message: 'Token is required' });
     }
@@ -16,4 +17,7 @@ export const authenticateToken = (req, res, next) => {
       res.locals.user = decoded
       next();
     });
+  } catch (error) {
+    return res.status(403).json({ message: error.message });
+  }
 }
