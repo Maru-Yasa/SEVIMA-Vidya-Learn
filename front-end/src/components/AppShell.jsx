@@ -22,13 +22,16 @@ export const AppShell = ({ children }) => {
     return <App>
         <div className="sm:w-full md:w-10/12 min-h-screen">
 
-            <Box className={'bg-orange-500 text-white flex flex-col md:flex-row justify-between items-center'}>
-                <div className="flex gap-3">
+            <div className={'bg-orange-500 p-5 rounded-lg border text-white flex flex-col md:flex-row justify-between items-center'}>
+                <div className="flex flex-col gap-1 text-center md:text-start">
                     <Text className={'font-bold text-2xl'}>
                         Vidya Learn
                     </Text>
+                    <Text className={'text-sm'}>
+                        Memudahkan belajar anda
+                    </Text>
                 </div>
-            </Box>
+            </div>
             <Box className={'mt-5 flex gap-3 flex-wrap'}>                
                     <Link to={'/home'} className="btn btn-primary text-white btn-sm"><FaHome /> Home</Link>
                     <Link to={'/home/profile'} className="btn btn-primary text-white btn-sm"><FaUserCircle /> Profile</Link>
