@@ -12,7 +12,6 @@ import { useAuth } from "../hooks/useAuth"
 export const Login = () => {
 
     const {register, handleSubmit, formState: { errors }, setError} = useForm()
-    const { isAuthenticated } = useAuth()
     const { setToken } = useAuth()
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
