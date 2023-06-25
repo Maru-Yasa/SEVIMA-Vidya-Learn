@@ -1,4 +1,3 @@
-
 <h1 align="center">
   <a href="https://github.com/Maru-Yasa/SEVIMA-Vidya-Learn">
     <!-- Please provide path to your logo here -->
@@ -34,11 +33,21 @@ Vidya berasal dari bahasa sangsekerta yang artinya cerdas. Kamu bisa belajar den
    ### Menjalankan Back-end
 
     $ npm run start 
-    or
+   or
+  
     $ npm run dev
+
    server by default berjalan di port 3000
  
    ### Menjalankan Front-end
 
     $ npm run dev
    
+  ### Back-End Env Variable
+  
+
+    DATABASE_URL  =
+	PORT  =  3000
+	OPEN_AI_SECRET  =  api_key_here
+	OPEN_AI_ORGANIZATION  =  org_here
+	SECRET  =  secret
