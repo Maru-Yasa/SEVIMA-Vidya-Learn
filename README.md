@@ -24,3 +24,21 @@ Vidya berasal dari bahasa sangsekerta yang artinya cerdas. Kamu bisa belajar den
  - OpenAi
  - React powered by vite
  - TailwindCSS
+ 
+## Instalasi
+
+    $ git clone https://github.com/Maru-Yasa/SEVIMA-Vidya-Learn
+    $ cd back-end && npm i && cd ../front-end && npm i && cd ../
+    $ cd back-end && cp .env.example && npx prisma generate
+    
+   ### Menjalankan Back-end
+
+    $ npm run start 
+    or
+    $ npm run dev
+   server by default berjalan di port 3000
+ 
+   ### Menjalankan Front-end
+
+    $ npm run dev
+   
