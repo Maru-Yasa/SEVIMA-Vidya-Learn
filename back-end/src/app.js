@@ -3,9 +3,11 @@ import config from './config'
 import { response } from './helper/response'
 import ApiRoute from './routes/api/v1'
 import cors from 'cors'
+import morgan from 'morgan'
 const app = express()
 
 app.use(cors())
+app.use(morgan('tiny'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
