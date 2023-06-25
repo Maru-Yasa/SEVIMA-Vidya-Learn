@@ -49,3 +49,6 @@ Vidya berasal dari bahasa sangsekerta yang artinya cerdas. Kamu bisa belajar den
 	OPEN_AI_SECRET  =  api_key_here
 	OPEN_AI_ORGANIZATION  =  org_here
 	SECRET  =  secret
+
+## Testing
+untuk npsn bisa menggunakan 20400416
