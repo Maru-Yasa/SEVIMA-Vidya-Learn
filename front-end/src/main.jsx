@@ -11,7 +11,6 @@ import { Register } from './pages/Register'
 import { AuthProvider } from './contexts/AuthContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { Home } from './pages/Home'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import { PromptDetail } from './pages/PromptDetail'
 import { Profile } from './pages/Profile'
 import { Analytic } from './pages/Analytic'
@@ -57,7 +56,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <RouterProvider router={router} />
-        <ReactQueryDevtools />
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>,
