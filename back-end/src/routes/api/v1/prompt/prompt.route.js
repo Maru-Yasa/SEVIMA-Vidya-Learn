@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createItem, deleteItem, getAnalyticUses, getItemById, getItemByUserId, getTrend } from "../../../../controllers/prompt/prompt.controller";
+import { createItem, deleteItem, getAnalyticUses, getItemById, getItemByUserId, getSelfAnalyticUses, getTrend } from "../../../../controllers/prompt/prompt.controller";
 import { authenticateToken } from "../../../../middlewares/auth";
 
 const route = Router()
@@ -13,7 +13,7 @@ route.delete('/:id', deleteItem);
 
 route.get('/analytic/trend', getTrend);
 route.get('/analytic/uses', getAnalyticUses);
-route.get('/analytic/selfuses', getAnalyticUses);
+route.get('/analytic/selfuses', getSelfAnalyticUses);
 
 
 

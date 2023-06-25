@@ -163,14 +163,6 @@ export const getAnalyticUses = async (req, res) => {
 }
 
 export const getSelfAnalyticUses = async (req, res) => {
-    if (validator.error) {
-        return res.status(400).json({
-            status: false,
-            message: 'Data kurang atau tidak tepat, mohon dilengkapi',
-            errors: validator.error.details
-        }); 
-    }
-
     let prompt = await prisma.prompt.findMany({
         where: {
             idUser: req.user.id

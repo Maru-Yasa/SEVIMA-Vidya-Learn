@@ -3,13 +3,13 @@ import { AppShell } from "../components/AppShell"
 import { Box } from "../components/Box"
 import { Text } from "../components/Text"
 import { useAuth } from "../hooks/useAuth"
-import { getAnalyticTrend, getAnalyticUses } from "../libs/api"
+import { getAnalyticTrend, getAnalyticUses, getSelfAnalyticUses } from "../libs/api"
 import { AnalyticChart } from "../components/AnalyticChart"
 
 export const Analytic = () => {
     const { user } = useAuth()
     const trend = useQuery(['analytic', 'trend', user.idSekolah], (q) => getAnalyticTrend(q.queryKey[2]))
-    const uses = useQuery(['analytic', user.ROLE == 'GURU' ? 'uses' : 'selfuses', user.idSekolah], (q) => getAnalyticUses(q.queryKey[2]))
+    const uses = useQuery(['analytic', user.ROLE == 'GURU' ? 'uses' : 'selfuses', user.idSekolah], (q) => user.ROLE == 'GURU' ? getAnalyticUses(q.queryKey[2]) : getSelfAnalyticUses())
 
     const handleData = () => {
         if (uses.isFetched) {
