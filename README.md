@@ -5,8 +5,6 @@
   </a>
 </h1>
 
-# Vidya Learn
-
 Vidya berasal dari bahasa sangsekerta yang artinya cerdas. Kamu bisa belajar dengan lebih cepat dan cerdas bersama Vidya. Vidya dapat membantu Siswa maupun Guru untuk belajar hal yang mereka inginkan, khusus untuk guru, guru dapat menganalisa siswanya seperti, trend pertanyaan, serta analytic penggunaan applikasi
 
 ## Fitur
