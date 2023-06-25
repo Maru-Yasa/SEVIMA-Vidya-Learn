@@ -79,7 +79,7 @@ const Step2 = ({ register, control, errors, loading, handlePrevious, watch }) =>
         <SelectInput control={control} name={'jenjangSekolah'} label={'Jenjang Sekolah'} placeholder={'Pilih jenjang sekolah'} options={jenjangSekolah} hook={register('jenjangSekolah', { required: {value:true, message: 'Jenjang Sekolah dibutuhkan'} })} error={errors.jenjangSekolah?.message} />
         <SelectInput control={control} name={'idProvinsi'} label={'Provinsi'} placeholder={'Pilih provinsi'} options={provinces} hook={register('idProvinsi', { required: {value:true, message: 'Provinsi dibutuhkan'} })} error={errors.idProvinsi?.message} />
         <SelectInput control={control} name={'idKabupaten'} label={'Kabupaten'} placeholder={'Pilih kabupaten'} options={regencies} hook={register('idKabupaten', { required: {value:true, message: 'Kabupaten dibutuhkan'} })} error={errors.idKabupaten?.message} />
-        <SelectInput async load={getSekolah} control={control} name={'idSekolah'} label={'Sekolah'} placeholder={'NPSN sekolah'} hook={register('idSekolah', { required: {value:true, message: 'Sekolah dibutuhkan'} })} error={errors.idSekolah?.message} />
+        <SelectInput helpText={"Harap isi dengan NPSN sekolah"} async load={getSekolah} control={control} name={'idSekolah'} label={'Sekolah'} placeholder={'NPSN sekolah'} hook={register('idSekolah', { required: {value:true, message: 'Sekolah dibutuhkan'} })} error={errors.idSekolah?.message} />
         <Input label={'Password'} type={'password'} hook={register("password", { required: {value: true, message: 'Password dibutuhkan'} })} error={errors.password?.message} />
         <div className="mt-5 mb-3 flex flex-col text-center">
             <div className="flex gap-3 justify-start">
